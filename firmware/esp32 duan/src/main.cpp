@@ -4,8 +4,8 @@
 #include <WiFi.h>
 #include <time.h>
 // ================= CẤU HÌNH WIFI =================
-const char* ssid       = "Hanh";      // Thay tên wifi nhà bạn
-const char* password   = "bjchh@nh93911868";         // Thay mật khẩu wifi
+const char* ssid       = "wifiname";      // Thay tên wifi nhà bạn
+const char* password   = "password";         // Thay mật khẩu wifi
 // Cấu hình máy chủ thời gian thế giới (NTP)
 const char* ntpServer          = "pool.ntp.org";
 const long  gmtOffset_sec      = 7 * 3600;        // Múi giờ Việt Nam: GMT+7 = 7 * 3600 giây
@@ -98,16 +98,16 @@ void loop() {
   bool alarm = false;
   String reason = "";
 
-  // Điều kiện 1: Phát hiện ngọn lửa VÀ nhiệt độ >= 80 độ C
+  // Điều kiện 1: Phát hiện ngọn lửa 
   if (isFlameDetected ) {
     alarm = true;
     reason += "[CHÁY NGUY HIỂM: Có lửa ] ";
   }
 
-  // Điều kiện 2: Nhiệt độ môi trường quá cao (> 50 độ C)
+  // Điều kiện 2: Nhiệt độ môi trường quá cao (> 45 độ C)
   if (!isnan(temperature) && (temperature > TEMP_WARN_THRESHOLD)) {
     alarm = true;
-    reason += "[CẢNH BÁO NHIỆT ĐỘ CAO > 50°C] ";
+    reason += "[CẢNH BÁO NHIỆT ĐỘ CAO > 45°C] ";
   }
 
   // Điều kiện 3: Phát hiện rò rỉ khí Gas vượt ngưỡng an toàn
