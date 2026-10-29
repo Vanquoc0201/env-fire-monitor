@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+model TelemetryLog {
+  id          String   @id @default(uuid())
+  deviceId    String   @default("ESP32_FIRE_MONITOR")
+  temperature Float
+  humidity    Float
+  gas         Int
+  flame       Boolean
+  createdAt   DateTime @default(now())
+
+  @@map("telemetry_logs")
+}
